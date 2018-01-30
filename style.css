@@ -1,0 +1,36 @@
+/* Global Styling */
+
+*, html {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    text-align: center;
+}
+
+/* Grid Styling */
+
+.row {
+    display: block;
+}
+
+.col {
+    display: inline-grid;
+}
+
+.cell {
+    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+}
+
+.active {
+    background: #000 !important;
+}
+
+.resetButton {
+    padding: 10px 50px;
+    margin-top: 10px;
+}
