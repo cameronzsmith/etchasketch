@@ -71,7 +71,7 @@ function resetClickEvent(resetButton) {
     });
 }
 
-// Deletes all of the elements contained within the list.
+// Deletes all of the elements contained within the grid.
 function deleteGrid() {
     document.querySelectorAll(".row").forEach(function(element) {
         element.remove();
