@@ -1,17 +1,23 @@
-createGrid(16, 16); // Creates a blank 16x16 grid.
+createGrid(16); // Creates a blank 16x16 grid.
 
 // Creates a blank grid
-function createGrid(rows, cols) {
+function createGrid(cell_size) {
     let container = document.getElementById("container");
 
-    for(let i = 0; i < rows; i++) {
+    for(let i = 0; i < cell_size; i++) {
         let newRow = document.createElement("div");
-        for(let j = 0; j < cols; j++) {
+        
+        for(let j = 0; j < cell_size; j++) {
             let newCol = document.createElement("div");
             newCol.classList.add("col");
 
             let cell = document.createElement("div");
             cell.classList.add("cell");
+
+            /* debugging
+            cell.innerHTML = j;
+            newCol.innerHTML = i;
+            */
 
             addHoverEffect(cell);
 

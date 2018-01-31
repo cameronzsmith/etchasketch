@@ -6,6 +6,7 @@
 }
 
 #container {
+    width: 100%;
     text-align: center;
 }
 
@@ -13,17 +14,19 @@
 
 .row {
     display: block;
+    margin: 0 auto;
 }
 
 .col {
-    display: inline-grid;
+    display: inline-block;
 }
 
 .cell {
     border: 1px solid #000;
-    width: 40px;
-    height: 40px;
     margin: 1px;
+    min-width: 30px;
+    min-height: 30px;
+    white-space: nowrap;
 }
 
 .active {
