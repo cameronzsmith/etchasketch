@@ -5,35 +5,36 @@
     padding: 0;
 }
 
-#container {
-    width: 100%;
-    text-align: center;
+.container {
+    width: 600px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, auto-fit);
 }
 
 /* Grid Styling */
 
 .row {
-    display: block;
-    margin: 0 auto;
+    grid-row-start: 1;
+    grid-row-end: auto;
 }
 
 .col {
-    display: inline-block;
+    grid-column-start: 1;
+    grid-column-end: auto;
 }
 
 .cell {
     border: 1px solid #000;
-    margin: 1px;
-    min-width: 30px;
-    min-height: 30px;
-    white-space: nowrap;
+    padding: 10px;
 }
 
-.active {
+.cell.active {
     background: #000 !important;
 }
 
 .resetButton {
-    padding: 10px 50px;
-    margin-top: 10px;
+    margin: 10px auto;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    padding: 10px 10px;
 }
