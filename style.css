@@ -7,6 +7,11 @@
 
 body {
     text-align: center;
+    background: #F6F7EB;
+}
+
+h1 {
+    margin: 30px;
 }
 
 /* Grid Styling */
@@ -16,21 +21,41 @@ body {
 }
 
 .gridContainer {
-    display: inline-grid;
-    border: 3px solid #000;
+    display: grid;
+    border: 80px solid #E94F37;
+    border-radius: 10px;
     margin: 0 auto;
     width: 50%;
     height: 500px;
+    background: #393E41;
+}
+
+.cell {
+    cursor: cell;
 }
 
 .cell.active {
     background: #000 !important;
 }
 
-.resetButton {
-    display: block;
-    margin: 10px auto;
+button {
+    background: #393E41;
+    color: #fff;
+    border: none;
+    margin: 10px 5px;
     grid-row-start: 1;
     grid-row-end: auto;
-    padding: 10px 10px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+button:hover {
+    font-weight: bold;
+}
+
+.rainbowActive {
+    background: #E94F37;
+    font-weight: bold;
 }
