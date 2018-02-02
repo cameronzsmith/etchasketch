@@ -53,7 +53,7 @@ function hover(cell) {
         } else if(drawActivated) {
             cell.classList.remove("active");
             cell.style.background = "#000";
-            cellColor += 0.001;
+            cellColor += 0.005;
             cell.style.opacity = cellColor;
         } else {
             cell.classList.remove("active");
