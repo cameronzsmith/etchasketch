@@ -16,6 +16,19 @@ h1 {
     text-shadow: 2px 2px #000;
 }
 
+#author {
+    font-size: 20px;
+    font-family: 'Indie Flower', cursive;
+}
+
+#author a {
+    text-decoration: none;
+}
+
+#author a:hover {
+    font-weight: bold;
+}
+
 /* Red outer box to create our "etch-a-sketch" */
 
 .outerbox {
@@ -119,22 +132,4 @@ button:hover {
 
 .cell.active {
     background: #000 !important;
-}
-
-
-/* Footer */
-
-.footer {
-    color: #fff;
-    grid-row-start: 4;
-    grid-row-end: auto;
-}
-
-.footer a {
-    color: #FEECB9;
-    text-decoration: none;
-}
-
-.footer a:hover {
-    text-decoration: underline;
 }
