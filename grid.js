@@ -37,7 +37,7 @@ function setActive(cell) {
     cell.addEventListener("mouseover", function() {
         if(rainbowActivated) {
             cell.classList.remove("active");
-            cell.style = `background: rgb(${generateRGB()}, ${generateRGB()}, ${generateRGB()}`; // Generates a random color for the cells
+            cell.style = `background: ${generateColor()}`;
         } else {
             cell.style.background = "#fff";
             cell.classList.add("active");
@@ -45,9 +45,20 @@ function setActive(cell) {
     })
 }
 
-// Generates a random number between between 0 and 254.
-function generateRGB() {
-    return Math.floor(Math.random() * 255);
+// Generates a random color from the rainbow
+function generateColor() {
+    let colors = {
+        0 : "red",
+        1 : "orange",
+        2 : "yellow",
+        3 : "green",
+        4 : "blue",
+        5 : "indigo",
+        6 : "violet"
+    };
+
+    // generate random number between 1 and 7
+    return colors[Math.floor(Math.random() * 7)];
 }
 
 // Destroys the old grid and creates a new one based on user input.
