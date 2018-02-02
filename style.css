@@ -16,6 +16,13 @@ h1 {
     text-shadow: 2px 2px #000;
 }
 
+h1:hover {
+    color: #FEECB9;
+    cursor: default;
+}
+
+/* Author styling */
+
 #author {
     font-size: 20px;
     font-family: 'Indie Flower', cursive;
@@ -59,10 +66,10 @@ button {
 }
 
 button:hover {
-    transform: scale(1.2);
     font-weight: bold;
-
+    transform: scale(1.2);
 }
+
 
 .buttonContainer {
     display: grid;
@@ -70,10 +77,26 @@ button:hover {
     grid-template-rows: 1;
 }
 
-.generate {
+.draw {
     grid-column-start: 1;
     grid-column-end: 2;
     justify-content: flex-start;
+}
+
+.draw:hover {
+    border: 2px solid #000;
+    background: #000;
+    color: #fff;
+}
+
+.drawActive {
+    border: 2px solid #000;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
 }
 
 .clear {
@@ -87,13 +110,13 @@ button:hover {
     justify-self: center;
 }
 
+.clear:hover {
+    transform: scale(1.2);
+}
+
 .rainbow {
-    background: red; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to top right, yellow , orange, red, green, blue, indigo, violet); /* Standard syntax (must be last) */
-    color: #fff;
+    background: #fff; /* For browsers that do not support gradients */
+    color: #000;
     grid-column-start: 3;
     grid-column-end: 4;
     justify-self: right;
@@ -101,6 +124,10 @@ button:hover {
 
 .rainbow:hover {
     color: #FEECB9;
+    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top right, yellow , orange, red, green, blue, indigo, violet); /* Standard syntax (must be last) */
     font-weight: bold;
 }
 
@@ -109,6 +136,13 @@ button:hover {
     color: #FEECB9;
     font-weight: bold;
     transform: scale(1.2);
+    background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top right, yellow , orange, red, green, blue, indigo, violet); /* Standard syntax (must be last) */
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
 }
 
 /* Grid Styling */
@@ -128,8 +162,64 @@ button:hover {
 
 .cell {
     cursor: cell;
+    opacity: 0.5;
 }
 
 .cell.active {
     background: #000 !important;
+}
+
+/* Keyframes */
+
+
+@-moz-keyframes spin { 
+    0% { 
+        -moz-transform: rotate(0deg); 
+    }
+    25% { 
+        -moz-transform: rotate(45deg); 
+    } 
+    50% { 
+        -moz-transform: rotate(0deg); 
+    } 
+    75% { 
+        -moz-transform: rotate(-45deg); 
+    } 
+    100% { 
+        -moz-transform: rotate(0deg); 
+    } 
+}
+@-webkit-keyframes spin { 
+    0% { 
+        -webkit-transform: rotate(0deg); 
+    }
+    25% { 
+        -webkit-transform: rotate(45deg); 
+    } 
+    50% { 
+        -webkit-transform: rotate(0deg); 
+    } 
+    75% { 
+        -webkit-transform: rotate(-45deg); 
+    } 
+    100% { 
+        -webkit-transform: rotate(0deg); 
+    } 
+}
+@keyframes spin {
+    0% { 
+        -webkit-transform: rotate(0deg); transform:rotate(0deg); 
+    } 
+    25% {
+        -webkit-transform: rotate(45deg); transform:rotate(45deg); 
+    } 
+    50% { 
+        -webkit-transform: rotate(0deg); transform:rotate(0deg); 
+    }
+    75% { 
+        -webkit-transform: rotate(-45deg); transform:rotate(-45deg); 
+    }
+    100% { 
+        -webkit-transform: rotate(0deg); transform:rotate(0deg); 
+    }
 }

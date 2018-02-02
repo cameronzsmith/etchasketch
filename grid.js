@@ -1,9 +1,14 @@
 createGrid(16); // Creates a blank 16x16 grid.
-_generateClickHandler(); // Add generate button click event listener.
-_clearClickHandler();
-_rainbowClickHandler();
 
+_clearClicked();
+_rainbowClicked();
+_drawClicked(); // Add generate button click event listener.
+
+let drawActivated = true;
 let rainbowActivated = false;
+
+let cellColor = 0;
+
 const gridBGColor = document.querySelector(".gridContainer").style.background;
 
 // Creates a blank grid
@@ -20,7 +25,7 @@ function createGrid(cell_size) {
             cell.classList.add("cell");
 
             // Sets cells to black on mouse over.
-            setActive(cell);
+            hover(cell);
 
             // Add the cell to our grid.
             grid.appendChild(cell);
@@ -33,18 +38,23 @@ function createGrid(cell_size) {
 }
 
 // Adds hover effect event listener for each cell.
-function setActive(cell) {
+function hover(cell) {
+
     cell.addEventListener("mouseover", function() {
         if(rainbowActivated) {
             cell.classList.remove("active");
             cell.style = `background: ${generateColor()}`;
+        } else if(drawActivated) {
+            cell.classList.remove("active");
+            cell.style.background = "#000";
+            cellColor += 0.001;
+            cell.style.opacity = cellColor;
         } else {
-            cell.style.background = "#fff";
-            cell.classList.add("active");
+            cell.classList.remove("active");
+            cell.style = gridBGColor;
         }
     })
 }
-
 // Generates a random color from the rainbow
 function generateColor() {
     let colors = {
@@ -62,21 +72,35 @@ function generateColor() {
 }
 
 // Destroys the old grid and creates a new one based on user input.
-function _generateClickHandler() {
-    let resetButton = document.querySelector(".generate");
+function _drawClicked() {
+    let drawButton = document.querySelector(".draw");
+    let drawButtonBG = drawButton.style.background;
 
-    resetButton.addEventListener("click", function() {
-        let cellSize = prompt("How many rows by columns?", 16);    
-        deleteGrid();
-        createGrid(cellSize);
+    drawButton.addEventListener("click", function() {
+
+        drawActivated = !drawActivated;
+
+        if(rainbowActivated == true) {
+            rainbowActivated = false;
+            document.querySelector(".rainbow").classList.remove("rainbowActive");
+        }
+        
+        if(drawActivated) {
+            drawButton.classList.add("drawActive");
+        } else {
+            drawButton.classList.remove("drawActive");
+            drawButton.style.background = drawButtonBG;
+        }
     })
 }
 
 // Clears the grid of all active/rainbow elements.
-function _clearClickHandler() {
+function _clearClicked() {
     let clearButton = document.querySelector(".clear");
 
     clearButton.addEventListener("click", function() {
+
+        cellColor = 0;
 
         document.querySelectorAll(".cell").forEach(function(element) {
             element.classList.remove("active");
@@ -87,12 +111,18 @@ function _clearClickHandler() {
 }
 
 // Checks if rainbow mode is activated, and if it is, stylize the background.
-function _rainbowClickHandler() {
+function _rainbowClicked() {
     let rainbowButton = document.querySelector(".rainbow");
     let rainbowOldBG = rainbowButton.style.background;
 
+
     rainbowButton.addEventListener("click", function() {
         rainbowActivated = !rainbowActivated;
+
+        if(drawActivated) {
+            drawActivated = false;
+            document.querySelector(".draw").classList.remove("drawActive");
+        }
 
         if(rainbowActivated) {
             rainbowButton.classList.add("rainbowActive");
