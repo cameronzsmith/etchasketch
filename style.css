@@ -70,6 +70,10 @@ button:hover {
     transform: scale(1.2);
 }
 
+button:focus {
+    outline: none;
+}
+
 
 .buttonContainer {
     display: grid;
