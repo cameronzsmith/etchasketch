@@ -11,6 +11,12 @@ let cellColor = 0;
 
 const gridBGColor = document.querySelector(".gridContainer").style.background;
 
+let size = document.querySelector(".size");
+
+size.addEventListener("change", function() {
+    resetGrid();
+})
+
 // Creates a blank grid
 function createGrid(cell_size) {
 
@@ -96,17 +102,11 @@ function _drawClicked() {
 
 // Clears the grid of all active/rainbow elements.
 function _clearClicked() {
+
     let clearButton = document.querySelector(".clear");
 
     clearButton.addEventListener("click", function() {
-
-        cellColor = 0;
-
-        document.querySelectorAll(".cell").forEach(function(element) {
-            element.classList.remove("active");
-            element.style.background = gridBGColor;
-        });
-
+        resetGrid();
     });
 }
 
@@ -132,6 +132,15 @@ function _rainbowClicked() {
             rainbowButton.style.background = rainbowOldBG;
         }
     })
+}
+
+// Resets the grid to its default state
+function resetGrid() {
+    cellColor = 0;
+
+    deleteGrid();
+    createGrid(parseInt(size.value), parseInt(size.value));
+
 }
 
 // Deletes all of the elements contained within the grid.
