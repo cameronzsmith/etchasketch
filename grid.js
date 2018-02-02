@@ -15,7 +15,7 @@ let size = document.querySelector(".size");
 
 size.addEventListener("change", function() {
     resetGrid();
-})
+});
 
 // Creates a blank grid
 function createGrid(cell_size) {
@@ -84,9 +84,11 @@ function _drawClicked() {
 
     drawButton.addEventListener("click", function() {
 
+        cellColor = 0;
+
         drawActivated = !drawActivated;
 
-        if(rainbowActivated == true) {
+        if(rainbowActivated) {
             rainbowActivated = false;
             document.querySelector(".rainbow").classList.remove("rainbowActive");
         }
@@ -114,7 +116,6 @@ function _clearClicked() {
 function _rainbowClicked() {
     let rainbowButton = document.querySelector(".rainbow");
     let rainbowOldBG = rainbowButton.style.background;
-
 
     rainbowButton.addEventListener("click", function() {
         rainbowActivated = !rainbowActivated;
