@@ -4,6 +4,7 @@ _clearClickHandler();
 _rainbowClickHandler();
 
 let rainbowActivated = false;
+const gridBGColor = document.querySelector(".gridContainer").style.background;
 
 // Creates a blank grid
 function createGrid(cell_size) {
@@ -51,7 +52,7 @@ function generateRGB() {
 
 // Destroys the old grid and creates a new one based on user input.
 function _generateClickHandler() {
-    let resetButton = document.querySelector(".reset");
+    let resetButton = document.querySelector(".generate");
 
     resetButton.addEventListener("click", function() {
         let cellSize = prompt("How many rows by columns?", 16);    
@@ -68,7 +69,7 @@ function _clearClickHandler() {
 
         document.querySelectorAll(".cell").forEach(function(element) {
             element.classList.remove("active");
-            element.style.background = "#393E41";
+            element.style.background = gridBGColor;
         });
 
     });
