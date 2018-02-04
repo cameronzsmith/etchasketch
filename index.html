@@ -12,20 +12,22 @@
     <body>
         <div class="outerbox">
             <h1>Etch-a-Sketch</h1>
-
+			
+			<!-- Grid Container -->
             <div class="gridContainer">
                 <div class="grid">
                 </div>
             </div>
-
+			
+			<!-- Author Credit -->
             <span id="author">Created by <a href="https://github.com/cameronzsmith">Cameron Smith</a></span>
-
+			
+			<!-- Creates a container to position our buttons under the grid. -->
             <div class="buttonContainer">
                 <button class="draw drawActive">
                     Draw
                 </button>
                 <div class="centerContainer">
-                    
                     <span class="description"># of cells per column &amp; row?<input type="text" class="size" placeholder="16" value="16"></span>
                     <button class="clear">
                         Clear
@@ -36,7 +38,8 @@
                 </button>
             </div>
         </div>
-       
+		
+		<!-- Etch a Sketch grid functionality -->
         <script src="grid.js"></script>
     </body>
 </html>
