@@ -7,15 +7,13 @@ _drawClicked(); // Add generate button click event listener.
 let drawActivated = true;
 let rainbowActivated = false;
 
-let cellColor = 0;
-
 const gridBGColor = document.querySelector(".gridContainer").style.background;
 
 let size = document.querySelector(".size");
 
 size.addEventListener("change", function() {
     resetGrid();
-})
+});
 
 // Creates a blank grid
 function createGrid(cell_size) {
@@ -46,15 +44,17 @@ function createGrid(cell_size) {
 // Adds hover effect event listener for each cell.
 function hover(cell) {
 
+    let cellColor = 0.5;
+
     cell.addEventListener("mouseover", function() {
         if(rainbowActivated) {
             cell.classList.remove("active");
             cell.style = `background: ${generateColor()}`;
         } else if(drawActivated) {
             cell.classList.remove("active");
-            cell.style.background = "#000";
-            cellColor += 0.005;
-            cell.style.opacity = cellColor;
+
+            cell.style = `background: rgba(0,0,0, ${cellColor += 0.1});`;
+            
         } else {
             cell.classList.remove("active");
             cell.style = gridBGColor;
@@ -84,9 +84,11 @@ function _drawClicked() {
 
     drawButton.addEventListener("click", function() {
 
+        cellColor = 0;
+
         drawActivated = !drawActivated;
 
-        if(rainbowActivated == true) {
+        if(rainbowActivated) {
             rainbowActivated = false;
             document.querySelector(".rainbow").classList.remove("rainbowActive");
         }
@@ -115,7 +117,6 @@ function _rainbowClicked() {
     let rainbowButton = document.querySelector(".rainbow");
     let rainbowOldBG = rainbowButton.style.background;
 
-
     rainbowButton.addEventListener("click", function() {
         rainbowActivated = !rainbowActivated;
 
@@ -136,11 +137,12 @@ function _rainbowClicked() {
 
 // Resets the grid to its default state
 function resetGrid() {
-    cellColor = 0;
+    document.querySelectorAll(".cell").forEach(function(element) {
+        element.style.background = "#fff";
+    });
 
     deleteGrid();
     createGrid(parseInt(size.value), parseInt(size.value));
-
 }
 
 // Deletes all of the elements contained within the grid.
